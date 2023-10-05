@@ -1,0 +1,138 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://recursos/Fonts/Kenney Mini Square Mono.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://recursos/Fonts/Kenney Rocket Square.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://juego/menus/BotonSalir.gd" type="Script" id=3]
+[ext_resource path="res://recursos/Players/bunny1_hurt.png" type="Texture" id=4]
+[ext_resource path="res://juego/menus/botones/MenuHover.tres" type="StyleBox" id=5]
+[ext_resource path="res://juego/menus/botones/MenuPausa.tres" type="StyleBox" id=6]
+[ext_resource path="res://juego/menus/MenuGameOver.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0509804, 0.666667, 0.435294, 1 )
+border_width_left = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color( 0.054902, 0.968627, 0.329412, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.313726, 0.941176, 0.705882, 1 )
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color( 0.930664, 0.210854, 0.210854, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0509804, 0.666667, 0.435294, 1 )
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color( 0.972549, 0.419608, 0.419608, 1 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 50
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="MenuGameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 718.0
+color = Color( 0.168627, 0.643137, 0.603922, 1 )
+
+[node name="Bunny1Hurt" type="Sprite" parent="."]
+position = Vector2( 350, 445 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -578.0
+margin_top = -561.0
+margin_right = -188.0
+margin_bottom = -133.0
+custom_constants/separation = 12
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ButtonReintentar" type="Button" parent="VBoxContainer"]
+margin_right = 390.0
+margin_bottom = 129.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 8 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+text = "Reintentar"
+
+[node name="BotonMenuPrincipal" type="Button" parent="VBoxContainer"]
+margin_top = 141.0
+margin_right = 390.0
+margin_bottom = 270.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 8 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/normal = SubResource( 4 )
+text = "Menú Principal"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+modulate = Color( 0, 0.392157, 0.4, 1 )
+margin_top = 282.0
+margin_right = 390.0
+margin_bottom = 286.0
+
+[node name="BotonSalir" type="Button" parent="VBoxContainer"]
+margin_top = 298.0
+margin_right = 390.0
+margin_bottom = 428.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 8 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/normal = SubResource( 5 )
+text = "Salir"
+script = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 119.0
+margin_top = 122.0
+margin_right = 565.0
+margin_bottom = 211.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.658824, 0.882353, 0.968627, 1 )
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 9.0
+margin_top = 11.0
+margin_right = 628.0
+margin_bottom = 74.0
+custom_colors/font_color = Color( 0.45098, 0.415686, 0.415686, 1 )
+custom_colors/font_outline_modulate = Color( 0.921569, 0.921569, 0.921569, 1 )
+custom_colors/font_color_shadow = Color( 0.113725, 0.105882, 0.105882, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "game over
+"
+
+[connection signal="pressed" from="VBoxContainer/ButtonReintentar" to="." method="_on_ButtonReintentar_pressed"]
+[connection signal="pressed" from="VBoxContainer/BotonMenuPrincipal" to="." method="_on_BotonMenuPrincipal_pressed"]
+[connection signal="pressed" from="VBoxContainer/BotonSalir" to="VBoxContainer/BotonSalir" method="_on_BotonSalir_pressed"]

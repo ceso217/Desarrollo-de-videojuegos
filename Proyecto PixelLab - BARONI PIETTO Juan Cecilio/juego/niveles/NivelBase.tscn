@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://juego/mundo/ParallaxBackground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://juego/mundo/CapaFrente.tscn" type="PackedScene" id=2]
+[ext_resource path="res://juego/niveles/Nivel.gd" type="Script" id=5]
+
+[node name="NivelBase" type="Node"]
+script = ExtResource( 5 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 1 )]
+
+[node name="CapaFrente" parent="." instance=ExtResource( 2 )]
+
+[node name="PlataformasChicas" type="Node" parent="."]
+
+[node name="PlataformasMedianas" type="Node" parent="."]
+
+[node name="PlataformasGrandes" type="Node" parent="."]
+
+[node name="Enemigos" type="Node" parent="."]
+
+[node name="Monedas" type="Node" parent="."]
+
+[node name="Zanahorias" type="Node" parent="."]
+
+[node name="Rayos" type="Node" parent="."]

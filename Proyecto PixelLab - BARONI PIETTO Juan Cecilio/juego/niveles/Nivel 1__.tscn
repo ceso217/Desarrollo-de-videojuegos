@@ -1,0 +1,159 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://juego/enemigos/Pinchon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://juego/menus/MenuPausa.tscn" type="PackedScene" id=2]
+[ext_resource path="res://juego/plataformas/Plataforma cake.tscn" type="PackedScene" id=3]
+[ext_resource path="res://juego/personajes/Yumpi.tscn" type="PackedScene" id=4]
+[ext_resource path="res://juego/objetos/ZanahoriaLLave.tscn" type="PackedScene" id=5]
+[ext_resource path="res://juego/objetos/Portal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://juego/plataformas/Plataforma piedra.tscn" type="PackedScene" id=7]
+[ext_resource path="res://juego/interfaz/ContenedorMonedasPlata.tscn" type="PackedScene" id=8]
+[ext_resource path="res://juego/interfaz/ContenedorMonedasOro.tscn" type="PackedScene" id=9]
+[ext_resource path="res://juego/interfaz/ContenedorLLaves.tscn" type="PackedScene" id=10]
+[ext_resource path="res://juego/interfaz/ContenedorMonedasBronce.tscn" type="PackedScene" id=11]
+[ext_resource path="res://juego/interfaz/ContenedorVidas.tscn" type="PackedScene" id=12]
+[ext_resource path="res://recursos/Background/bg_layer4.png" type="Texture" id=13]
+[ext_resource path="res://recursos/Background/bg_layer2.png" type="Texture" id=14]
+[ext_resource path="res://juego/interfaz/HUD.gd" type="Script" id=15]
+[ext_resource path="res://recursos/Background/bg_layer1.png" type="Texture" id=16]
+[ext_resource path="res://recursos/Background/bg_layer3.png" type="Texture" id=17]
+[ext_resource path="res://juego/niveles/Nivel.gd" type="Script" id=18]
+[ext_resource path="res://juego/enemigos/Sierrin.tscn" type="PackedScene" id=19]
+
+[node name="Nivel 0" type="Node"]
+script = ExtResource( 18 )
+nivel_actual = "res://juego/niveles/Nivel 0.tscn"
+
+[node name="Yumpi" parent="." instance=ExtResource( 4 )]
+position = Vector2( 266, 533 )
+
+[node name="Plataforma stone" parent="." instance=ExtResource( 7 )]
+position = Vector2( 706, 597 )
+scale = Vector2( 25, 0.4 )
+
+[node name="Zanahorias" type="Node" parent="."]
+
+[node name="ZanahoriaLLave" parent="Zanahorias" instance=ExtResource( 5 )]
+position = Vector2( 473, 520 )
+
+[node name="ZanahoriaLLave2" parent="Zanahorias" instance=ExtResource( 5 )]
+position = Vector2( 980, 509 )
+
+[node name="ZanahoriaLLave3" parent="Zanahorias" instance=ExtResource( 5 )]
+position = Vector2( 772, 512 )
+
+[node name="ZanahoriaLLave4" parent="Zanahorias" instance=ExtResource( 5 )]
+position = Vector2( 573, 516 )
+
+[node name="ZanahoriaLLave5" parent="Zanahorias" instance=ExtResource( 5 )]
+position = Vector2( 1049, 511 )
+
+[node name="ZanahoriaLLave6" parent="Zanahorias" instance=ExtResource( 5 )]
+position = Vector2( 879, 510 )
+
+[node name="ZanahoriaLLave7" parent="Zanahorias" instance=ExtResource( 5 )]
+position = Vector2( 670, 515 )
+
+[node name="Portal" parent="." instance=ExtResource( 6 )]
+position = Vector2( 81, 506 )
+
+[node name="Pinchon" parent="." instance=ExtResource( 1 )]
+position = Vector2( 584, 571 )
+
+[node name="CapaFrente" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CapaFrente"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -1.0
+margin_right = 4.0
+margin_bottom = -1.0
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 46.0, 188.0 ],
+"_edit_vertical_guides_": [ 1093.0 ]
+}
+
+[node name="ContenedorVidas" parent="CapaFrente/HUD" instance=ExtResource( 12 )]
+margin_top = 47.0
+margin_bottom = 112.0
+
+[node name="ContenedorLLaves" parent="CapaFrente/HUD" instance=ExtResource( 10 )]
+margin_left = 2.0
+margin_top = 122.0
+margin_right = 167.0
+margin_bottom = 187.0
+
+[node name="ContenedorMonedasBronce" parent="CapaFrente/HUD" instance=ExtResource( 11 )]
+margin_left = 1122.0
+margin_top = 183.0
+margin_right = 1262.0
+margin_bottom = 248.0
+
+[node name="ContenedorMonedasOro" parent="CapaFrente/HUD" instance=ExtResource( 9 )]
+margin_left = 1121.0
+margin_top = 47.0
+margin_right = 1261.0
+margin_bottom = 112.0
+
+[node name="ContenedorMonedasPlata" parent="CapaFrente/HUD" instance=ExtResource( 8 )]
+margin_left = 1122.0
+margin_top = 118.0
+margin_right = 1262.0
+margin_bottom = 176.0
+
+[node name="MenuPausa" parent="CapaFrente/HUD" instance=ExtResource( 2 )]
+visible = false
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_offset = Vector2( 0, -385 )
+
+[node name="ParallaxFondo" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0, 1 )
+motion_mirroring = Vector2( 2048, 2048 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxFondo"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 16 )
+
+[node name="ParallaxNubesLejanas" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 1 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxNubesLejanas"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 14 )
+
+[node name="ParallaxNubesMedianas" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.6, 1 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxNubesMedianas"]
+margin_left = -61.0
+margin_top = 22.0
+margin_right = 1987.0
+margin_bottom = 2070.0
+texture = ExtResource( 17 )
+
+[node name="ParallaxNubesCercanas" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.9, 1 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxNubesCercanas"]
+margin_left = 138.0
+margin_top = 21.0
+margin_right = 2186.0
+margin_bottom = 2069.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Plataforma cake" parent="." instance=ExtResource( 3 )]
+position = Vector2( 693, 373 )
+
+[node name="Sierrin" parent="." instance=ExtResource( 19 )]
+position = Vector2( 666, 323 )

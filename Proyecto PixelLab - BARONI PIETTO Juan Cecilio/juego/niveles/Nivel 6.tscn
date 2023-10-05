@@ -1,0 +1,110 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://juego/niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://juego/personajes/Yumpi.tscn" type="PackedScene" id=2]
+[ext_resource path="res://juego/plataformas/Plataforma grass.tscn" type="PackedScene" id=3]
+[ext_resource path="res://juego/plataformas/Plat small grass.tscn" type="PackedScene" id=4]
+[ext_resource path="res://juego/enemigos/Sierrin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://juego/objetos/MonedaOro.tscn" type="PackedScene" id=6]
+[ext_resource path="res://juego/objetos/ZanahoriaLLave.tscn" type="PackedScene" id=7]
+[ext_resource path="res://juego/enemigos/Pinchon.tscn" type="PackedScene" id=8]
+[ext_resource path="res://juego/objetos/MonedaPlata.tscn" type="PackedScene" id=9]
+[ext_resource path="res://juego/objetos/PlataformaImpulsora.tscn" type="PackedScene" id=10]
+[ext_resource path="res://juego/plataformas/Plataforma grande grass.tscn" type="PackedScene" id=11]
+[ext_resource path="res://juego/objetos/Spikes.tscn" type="PackedScene" id=12]
+[ext_resource path="res://juego/enemigos/Nubon.tscn" type="PackedScene" id=13]
+[ext_resource path="res://juego/enemigos/Volon.tscn" type="PackedScene" id=14]
+[ext_resource path="res://juego/objetos/Portal.tscn" type="PackedScene" id=15]
+
+[node name="Nivel 6" instance=ExtResource( 1 )]
+nivel_actual = "res://juego/niveles/Nivel 6.tscn"
+
+[node name="Plat small grass" parent="PlataformasChicas" index="0" instance=ExtResource( 4 )]
+position = Vector2( 836, 254 )
+scale = Vector2( 0.9, 0.3 )
+
+[node name="Plat small grass2" parent="PlataformasChicas" index="1" instance=ExtResource( 4 )]
+position = Vector2( 1033, 39 )
+
+[node name="Plat small grass3" parent="PlataformasChicas" index="2" instance=ExtResource( 4 )]
+position = Vector2( 1822, 29 )
+
+[node name="Plat small grass8" parent="PlataformasChicas" index="3" instance=ExtResource( 4 )]
+position = Vector2( 1941, 180 )
+
+[node name="Plat small grass4" parent="PlataformasChicas" index="4" instance=ExtResource( 4 )]
+position = Vector2( 3497, -184 )
+
+[node name="Plat small grass5" parent="PlataformasChicas" index="5" instance=ExtResource( 4 )]
+position = Vector2( 3118, -185 )
+
+[node name="Plat small grass7" parent="PlataformasChicas" index="6" instance=ExtResource( 4 )]
+position = Vector2( 3314, -185 )
+
+[node name="Plat small grass6" parent="PlataformasChicas" index="7" instance=ExtResource( 4 )]
+position = Vector2( 2916, -185 )
+
+[node name="Plataforma grass" parent="PlataformasMedianas" index="0" instance=ExtResource( 3 )]
+position = Vector2( 530, 422 )
+
+[node name="Plataforma grass2" parent="PlataformasMedianas" index="1" instance=ExtResource( 3 )]
+position = Vector2( 3765, -312 )
+
+[node name="Plataforma grande grass" parent="PlataformasGrandes" index="0" instance=ExtResource( 11 )]
+position = Vector2( 2279, -73 )
+scale = Vector2( 1.5, 0.4 )
+
+[node name="Sierrin" parent="Enemigos" index="0" instance=ExtResource( 5 )]
+position = Vector2( 789, 210 )
+
+[node name="Sierrin2" parent="Enemigos" index="1" instance=ExtResource( 5 )]
+position = Vector2( 2063, -117 )
+
+[node name="Pinchon" parent="Enemigos" index="2" instance=ExtResource( 8 )]
+position = Vector2( 2228, -92 )
+
+[node name="Volon" parent="Enemigos" index="3" instance=ExtResource( 14 )]
+position = Vector2( 2735, -19.0001 )
+
+[node name="Nubon" parent="Enemigos" index="4" instance=ExtResource( 13 )]
+position = Vector2( 3104, -762 )
+
+[node name="Spikes" parent="Enemigos" index="5" instance=ExtResource( 12 )]
+position = Vector2( 3806, -346 )
+
+[node name="MonedaOro" parent="Monedas" index="0" instance=ExtResource( 6 )]
+position = Vector2( 923, 13 )
+
+[node name="MonedaOro2" parent="Monedas" index="1" instance=ExtResource( 6 )]
+position = Vector2( 902, 82 )
+
+[node name="MonedaPlata" parent="Monedas" index="2" instance=ExtResource( 9 )]
+position = Vector2( 1325, -262 )
+
+[node name="MonedaPlata2" parent="Monedas" index="3" instance=ExtResource( 9 )]
+position = Vector2( 1524, -262 )
+
+[node name="MonedaPlata3" parent="Monedas" index="4" instance=ExtResource( 9 )]
+position = Vector2( 1937, 132 )
+
+[node name="ZanahoriaLLave" parent="Zanahorias" index="0" instance=ExtResource( 7 )]
+position = Vector2( 1033, -5 )
+
+[node name="ZanahoriaLLave2" parent="Zanahorias" index="1" instance=ExtResource( 7 )]
+position = Vector2( 1422, -39 )
+
+[node name="Yumpi" parent="." index="9" instance=ExtResource( 2 )]
+position = Vector2( 430, 363 )
+
+[node name="PlataformaImpulsora" parent="." index="10" instance=ExtResource( 10 )]
+position = Vector2( 1228, 51 )
+
+[node name="PlataformaImpulsora2" parent="." index="11" instance=ExtResource( 10 )]
+position = Vector2( 1611, 51 )
+
+[node name="PlataformaImpulsora3" parent="." index="12" instance=ExtResource( 10 )]
+position = Vector2( 1421, 49 )
+
+[node name="Portal" parent="." index="13" instance=ExtResource( 15 )]
+position = Vector2( 3886, -398 )
+proximo_nivel = "res://juego/niveles/Nivel 7.tscn"

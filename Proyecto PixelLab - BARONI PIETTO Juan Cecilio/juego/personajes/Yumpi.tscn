@@ -1,0 +1,402 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://recursos/Players/bunny1_stand.png" type="Texture" id=1]
+[ext_resource path="res://juego/personajes/Yumpi.gd" type="Script" id=2]
+[ext_resource path="res://recursos/Players/bunny1_walk2.png" type="Texture" id=3]
+[ext_resource path="res://recursos/Sfx/dash.wav" type="AudioStream" id=4]
+[ext_resource path="res://recursos/Players/bunny1_walk1.png" type="Texture" id=5]
+[ext_resource path="res://recursos/Players/bunny1_jump.png" type="Texture" id=6]
+[ext_resource path="res://recursos/Items/wing_left.png" type="Texture" id=7]
+[ext_resource path="res://recursos/Items/wing_right.png" type="Texture" id=8]
+[ext_resource path="res://recursos/Sfx/dash2.wav" type="AudioStream" id=9]
+[ext_resource path="res://recursos/Sfx/Jump.wav" type="AudioStream" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "caminar",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "saltar",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AlaIzq:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "aclarecer"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "dashD"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animacion:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 210, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionPolygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 210, 0 ) ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioDash")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 342.86,
+"stream": ExtResource( 4 )
+}, {
+"end_offset": 0.0956988,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 9 )
+} ],
+"times": PoolRealArray( -0.1, 0, 0.1 )
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "dashI"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animacion:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -210, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionPolygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -210, 0 ) ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioDash")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 9 )
+} ],
+"times": PoolRealArray( 0, 0.1 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "default"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AlaIzq:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AlaDer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "entrar_portal"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animacion:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Animacion:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Animacion:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "oscurecer"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "volar"
+length = 0.5
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("AlaIzq:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AlaDer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AlaIzq:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 0.554786 ),
+"update": 0,
+"values": [ -35.0, 30.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AlaDer:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 0.554786 ),
+"update": 0,
+"values": [ 35.0, -30.0 ]
+}
+
+[node name="Yumpi" type="KinematicBody2D" groups=["jugador"]]
+scale = Vector2( 0.4, 0.4 )
+z_index = 50
+z_as_relative = false
+collision_layer = 2
+collision_mask = 60
+script = ExtResource( 2 )
+fuerza_dash = 1500
+
+[node name="AlaIzq" type="Sprite" parent="."]
+visible = false
+position = Vector2( -20, 5 )
+scale = Vector2( 1.4, 1.4 )
+texture = ExtResource( 7 )
+offset = Vector2( -37.5, -14.2857 )
+
+[node name="AlaDer" type="Sprite" parent="."]
+visible = false
+position = Vector2( 20, 5 )
+rotation = 0.610865
+scale = Vector2( 1.4, 1.4 )
+texture = ExtResource( 8 )
+offset = Vector2( 39.2857, -14.2857 )
+
+[node name="Animacion" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="AudioDash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -11.362
+pitch_scale = 0.8
+bus = "SFX"
+
+[node name="AudioSalto" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -11.362
+pitch_scale = 0.8
+bus = "SFX"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -2.5, -285 )
+current = true
+zoom = Vector2( 1.5, 1.5 )
+limit_bottom = 1500
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_left = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.17
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 32.5, 100, -32.5, 100, -35, 95, -47.5, 40, -42.5, -10, -20, -40, 20, -40, 45, -12.5, 50, 40, 35, 95 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/aclarecer = SubResource( 6 )
+anims/dashD = SubResource( 8 )
+anims/dashI = SubResource( 9 )
+anims/default = SubResource( 4 )
+anims/entrar_portal = SubResource( 5 )
+anims/oscurecer = SubResource( 7 )
+anims/volar = SubResource( 3 )
+
+[node name="DuracionPowerUpSalto" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="DuracionPowerUpVolar" type="Timer" parent="."]
+wait_time = 1.2
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="DuracionPowerUpSalto" to="." method="_on_DuracionPowerUp_timeout"]
+[connection signal="timeout" from="DuracionPowerUpVolar" to="." method="_on_DuracionPowerUpVolar_timeout"]

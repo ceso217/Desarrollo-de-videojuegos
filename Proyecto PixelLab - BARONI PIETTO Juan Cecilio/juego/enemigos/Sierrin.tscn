@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://recursos/Enemies/spikeBall1.png" type="Texture" id=1]
+[ext_resource path="res://juego/enemigos/Sierrin.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "rodarD"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "rodarI"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 38.0132
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 28.0713
+
+[node name="Sierrin" type="KinematicBody2D"]
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -1, -118 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+
+[node name="DetectorDeVacio" type="RayCast2D" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 45, 26 )
+z_index = 35
+z_as_relative = false
+enabled = true
+cast_to = Vector2( 0, 20 )
+collision_mask = 4
+
+[node name="DetectorPared" type="RayCast2D" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 40, 1 )
+z_index = 35
+z_as_relative = false
+enabled = true
+cast_to = Vector2( 15, 0 )
+collision_mask = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/rodarD = SubResource( 1 )
+anims/rodarI = SubResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( -9, -35 )
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+modulate = Color( 0.360784, 0.258824, 0.258824, 1 )
+position = Vector2( 8, -83 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

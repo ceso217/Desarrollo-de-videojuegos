@@ -1,0 +1,49 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://juego/niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://juego/plataformas/Plat small grass.tscn" type="PackedScene" id=2]
+[ext_resource path="res://juego/personajes/Yumpi.tscn" type="PackedScene" id=3]
+[ext_resource path="res://juego/objetos/MonedaBronce.tscn" type="PackedScene" id=4]
+[ext_resource path="res://juego/objetos/MonedaOro.tscn" type="PackedScene" id=5]
+[ext_resource path="res://juego/objetos/MonedaPlata.tscn" type="PackedScene" id=6]
+[ext_resource path="res://juego/plataformas/Plataforma grass.tscn" type="PackedScene" id=7]
+[ext_resource path="res://juego/objetos/Spikes.tscn" type="PackedScene" id=8]
+[ext_resource path="res://juego/objetos/Portal.tscn" type="PackedScene" id=9]
+[ext_resource path="res://juego/objetos/ZanahoriaLLave.tscn" type="PackedScene" id=10]
+
+[node name="Nivel 2" instance=ExtResource( 1 )]
+nivel_actual = "res://juego/niveles/Nivel 2.tscn"
+
+[node name="Plat small grass" parent="PlataformasChicas" index="0" instance=ExtResource( 2 )]
+position = Vector2( 432, 519 )
+scale = Vector2( 0.6, 0.3 )
+
+[node name="Plat small grass2" parent="PlataformasChicas" index="1" instance=ExtResource( 2 )]
+position = Vector2( 931, 485 )
+scale = Vector2( 0.6, 0.3 )
+
+[node name="Plataforma grass" parent="PlataformasMedianas" index="0" instance=ExtResource( 7 )]
+position = Vector2( 745, 447 )
+scale = Vector2( 0.5, 0.3 )
+
+[node name="Spikes" parent="Enemigos" index="0" instance=ExtResource( 8 )]
+position = Vector2( 801, 418 )
+
+[node name="MonedaBronce" parent="Monedas" index="0" instance=ExtResource( 4 )]
+position = Vector2( 485, 406 )
+
+[node name="MonedaOro" parent="Monedas" index="1" instance=ExtResource( 5 )]
+position = Vector2( 606, 308 )
+
+[node name="MonedaPlata" parent="Monedas" index="2" instance=ExtResource( 6 )]
+position = Vector2( 519, 322 )
+
+[node name="ZanahoriaLLave" parent="Zanahorias" index="0" instance=ExtResource( 10 )]
+position = Vector2( 694, 394 )
+
+[node name="Yumpi" parent="." index="9" instance=ExtResource( 3 )]
+position = Vector2( 405, 465 )
+
+[node name="Portal" parent="." index="10" instance=ExtResource( 9 )]
+position = Vector2( 934, 407 )
+proximo_nivel = "res://juego/niveles/Nivel 3.tscn"
